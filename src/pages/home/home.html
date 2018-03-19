@@ -8,23 +8,30 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      {{item}}
+      {{ item }}
     </ion-item>
   </ion-list>
-
 </ion-header>
 
+
 <ion-content padding>
-  <h2>Results</h2>
-  <h2 id="noResult">No Result</h2>
+
+
+
+  <ul>
+    <li *ngFor="let result of results">{{result.title}} {{result.author}} {{result.date}} {{result.image}}</li>
+  </ul>
+  <h2>Result</h2>
+  <br><br>
+  <h3 id='noresult' >No Result</h3>
   <ion-list>
-  <ion-item *ngFor="let current of results">
-    <ion-thumbnail item-start>
-      <img src="http://via.placeholder.com/140x100">
-    </ion-thumbnail>
-    <h2>{{current.title}}</h2>
-    <p>{{current.author}} • {{current.date}}</p>
-    <button ion-button clear item-end>></button>
-  </ion-item>
-</ion-list>
+      <ion-item *ngFor="let result of results">
+        <ion-thumbnail item-start>
+          <img src="http://via.placeholder.com/200x200">
+        </ion-thumbnail>
+        <h2>{{result.title}}</h2>
+        <p>{{result.date}}</p>
+        <button ion-button clear item-end >></button>
+      </ion-item>
+    </ion-list>
 </ion-content>
