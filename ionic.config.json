@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
+  "name": "TP4",
+=======
   "name": "tp4",
+>>>>>>> fe774a0ac82b8757679529fddca732d2bc5ce00b
   "app_id": "",
   "type": "ionic-angular",
   "integrations": {}
