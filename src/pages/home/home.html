@@ -1,27 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     APP
     </ion-title>
   </ion-navbar>
 
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      {{ item }}
+    <ion-item *ngFor="let item of results">
+      <ion-thumbnail item-start>
+        <img src="http://via.placeholder.com/100x100">
+      </ion-thumbnail>
+      <h2>{{item.title}}</h2>
+      <p>{{item.date}}</p>
+      <button ion-button clear item-end>
+        <p style="font-size: 30px;">></p>
+      </button>
     </ion-item>
   </ion-list>
 </ion-header>
 
 
 <ion-content padding>
-
-
-  <ul>
-    <li *ngFor="let result of results">{{result.title}} {{result.author}} {{result.date}} {{result.image}}</li>
-  </ul>
   <h2>Result</h2>
-  <br>
+  <h5 id='noresult'>No Result</h5>
+  <!-- <br>
   <br>
   <h3 id='noresult'>No Result</h3>
   <ion-list>
@@ -35,5 +38,5 @@
         <p style="font-size: 30px;">></p>
       </button>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

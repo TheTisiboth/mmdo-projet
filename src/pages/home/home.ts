@@ -15,15 +15,17 @@ export class HomePage {
 
   getItems(ev: any) {
     let val = ev.target.value;
-    if (val && val.trim() != '') {
+    val = val.trim(); //supprime les espaces en début et fin de caracteres
+    val = val.replace(' ', '-');
+    if (val== '') {
+      this.results = [];
+      document.getElementById("noresult").style.display = "block";
+    }
+    else {
       this.results = fakeResults;
       document.getElementById("noresult").style.display = "none";
     }
-    else {
-      this.results = [];
-      document.getElementById("noresult").style.display = "block";
 
-    }
   }
 }
 
