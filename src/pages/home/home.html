@@ -9,11 +9,11 @@
   <ion-list>
     <ion-item *ngFor="let item of results">
       <ion-thumbnail item-start>
-        <img src="http://via.placeholder.com/100x100">
+        <img [src]="item.image">
       </ion-thumbnail>
       <h2>{{item.title}}</h2>
       <p>{{item.date}}</p>
-      <button ion-button clear item-end>
+      <button ion-button clear item-end [navPush]="detailspage" [navParams] = "item" >
         <p style="font-size: 30px;">></p> <!--g fleche dégueu -->
       </button>
     </ion-item>
@@ -22,21 +22,7 @@
 
 
 <ion-content padding>
-  <h2>Result</h2>
-  <h5 id='noresult'>No Result</h5>
-  <!-- <br>
-  <br>
-  <h3 id='noresult'>No Result</h3>
-  <ion-list>
-    <ion-item *ngFor="let result of results">
-      <ion-thumbnail item-start>
-        <img src="http://via.placeholder.com/200x200">
-      </ion-thumbnail>
-      <h2>{{result.title}}</h2>
-      <p>{{result.date}}</p>
-      <button ion-button clear item-end>
-        <p style="font-size: 30px;">></p>
-      </button>
-    </ion-item>
-  </ion-list> -->
+  <h1>Result</h1>
+  <h6 id='noresult'>No Result</h6>
+
 </ion-content>
