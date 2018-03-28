@@ -6,6 +6,13 @@
   </ion-navbar>
 
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1>Result</h1>
   <ion-list>
     <ion-item *ngFor="let item of results">
       <ion-thumbnail item-start>
@@ -13,16 +20,14 @@
       </ion-thumbnail>
       <h2>{{item.title}}</h2>
       <p>{{item.date}}</p>
-      <button ion-button clear item-end [navPush]="detailspage" [navParams] = "item" >
-        <p style="font-size: 30px;">></p> <!--g fleche dégueu -->
+      <button ion-button clear item-end [navPush]="detailspage" [navParams]="item">
+        <p style="font-size: 30px;">></p>
+        <!--g fleche dégueu -->
       </button>
     </ion-item>
   </ion-list>
-</ion-header>
 
 
-<ion-content padding>
-  <h1>Result</h1>
-  <h6 id='noresult'>No Result</h6>
+  <h6 *ngIf="results.length === 0">No Result</h6>
 
 </ion-content>
