@@ -3,7 +3,12 @@ import { NavController } from 'ionic-angular';
 import { Title } from '@angular/platform-browser';
 import { NgModel } from '@angular/forms';
 import { DetailsPage } from '../details/details';
-
+import { HttpClient } from "@angular/common/http";
+import { HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import { api_key } from "../../app/tmdb";
+import { pluck } from 'rxjs/operator/pluck';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
 	selector: 'page-home',
@@ -12,39 +17,40 @@ import { DetailsPage } from '../details/details';
 
 export class HomePage {
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController, public http: HttpClient) {
 		this.detailspage = DetailsPage;
-		this.results = [];
+		this.results = Observable.of([]);
 	}
 	detailspage: any;
 	params: Result;
-	results: Result[];
+	results: Observable<Result[]>;
 
 	getItems(ev: any) {
 		let val = ev.target.value;
 
 		if (val != null && val != "") {
 			val = val.trim().replace(' ', '-'); //trim() : supprime les espaces en début et fin de caracteres
-			this.results = fakeResults;
+			this.results = this.fetchResults(val);
 		}
 		else {
-			this.results = [];
+			this.results = Observable.of([]);
 		}
-	}
+  }
+
+  fetchResults(name: string): Observable<Result[]>{
+    const url = "https://api.themoviedb.org/3/search/movie";
+    return this.http.get<Result[]>(url, {params: {api_key: api_key, query: name}}).pluck('results');
+  }
 }
 
-interface Result {
+export interface Result {
+  id: string;
 	title: string;
-	original_title: string;
-	tagline: string;
+  original_title: string;
+  original_language: string;
   overview: string;
-  link_tmdb: string;
-  image: string;
+  poster_path: string;
 }
-const fakeResults: Result[] = [
-	{ title: 'title1', author: 'pelo1', date: '01/01/01', image: 'http://via.placeholder.com/101x101' },
-	{ title: 'title2', author: 'pelo2', date: '02/02/02', image: 'http://via.placeholder.com/102x102' },
-	{ title: 'title3', author: 'pelo3', date: '03/03/03', image: 'http://via.placeholder.com/103x103' }
-];
+
 
 
