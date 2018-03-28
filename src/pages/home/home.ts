@@ -26,7 +26,7 @@ export class HomePage {
 	results: Observable<Result[]>;
 
 	getItems(ev: any) {
-		let val = ev.target.value;
+		let val: string = ev.target.value;
 
 		if (val != null && val != "") {
 			val = val.trim().replace(' ', '-'); //trim() : supprime les espaces en début et fin de caracteres
@@ -38,7 +38,7 @@ export class HomePage {
   }
 
   fetchResults(name: string): Observable<Result[]>{
-    const url = "https://api.themoviedb.org/3/search/movie";
+    const url: string = "https://api.themoviedb.org/3/search/movie";
     return this.http.get<Result[]>(url, {params: {api_key: api_key, query: name}}).pluck('results');
   }
 }
