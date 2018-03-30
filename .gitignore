@@ -12,7 +12,7 @@ log.txt
 *.json
 .vscode/
 npm-debug.log*
-
+tmdb.ts
 .idea/
 .sourcemaps/
 .sass-cache/

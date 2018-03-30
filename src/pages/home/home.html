@@ -5,18 +5,29 @@
 		</ion-title>
 	</ion-navbar>
 
+<<<<<<< HEAD
 	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+=======
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+>>>>>>> 5d6ddf18e59e9b1e0ff3970e157c708c819ace72
 </ion-header>
 
 
 <ion-content padding>
+<<<<<<< HEAD
     <h1>Result</h1>
+=======
+
+  <h1>Result</h1>
+>>>>>>> 5d6ddf18e59e9b1e0ff3970e157c708c819ace72
   <ion-list>
     <ion-item *ngFor="let item of results | async">
       <ion-thumbnail item-start>
         <img [src]="'https://image.tmdb.org/t/p/w154' + item.poster_path" alt="Description pour les aveugles">
       </ion-thumbnail>
       <h2>{{item.title}}</h2>
+<<<<<<< HEAD
       <p>{{item.id}}</p>
       <button ion-button clear item-end [navPush]="detailspage" [navParams]="item">
         <p style="font-size: 30px;">></p>
@@ -25,5 +36,17 @@
     </ion-item>
   </ion-list>
 	 <h6 *ngIf = "(results | async)?.length === 0">No Result</h6>
+=======
+      <p>{{item.date}}</p>
+      <button ion-button clear item-end [navPush]="detailspage" [navParams]="item">
+        <p style="font-size: 30px;">></p>
+        <!--g fleche dégueu -->
+      </button>
+    </ion-item>
+  </ion-list>
+
+
+  <h6 *ngIf="results.length === 0">No Result</h6>
+>>>>>>> 5d6ddf18e59e9b1e0ff3970e157c708c819ace72
 
 </ion-content>
