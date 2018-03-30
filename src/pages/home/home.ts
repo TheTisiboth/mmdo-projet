@@ -39,7 +39,7 @@ export class HomePage {
 
   fetchResults(name: string): Observable<Result[]>{
     const url: string = "https://api.themoviedb.org/3/search/movie";
-    return this.http.get<Result[]>(url, {params: {api_key: api_key, query: name}}).pluck('results');
+    return this.http.get<Result[]>(url, {params: {api_key: api_key, query: name,language: 'fr'}}).pluck('results');
   }
 }
 
