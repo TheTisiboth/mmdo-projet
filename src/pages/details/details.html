@@ -14,8 +14,9 @@
 
 
 <ion-content padding>
-	<h1>{{param.title}}</h1>
-	<p>{{param.original_title}}</p>
-	<p>{{param.overview}}</p>
-	<img [src]="'https://image.tmdb.org/t/p/w154' + param.poster_path" alt="Description pour les aveugles">
+  <h1> {{param.title}}</h1>
+  <p><b>Date de sortie : </b> {{param.release_date | date:'dd/MM/yyyy'}}</p>
+	<p><b>Titre original : </b> {{param.original_title}}</p>
+	<p><b>Synopsis : </b> {{param.overview}}</p>
+	<img [src]="'https://image.tmdb.org/t/p/w92' + param.poster_path" alt="Description pour les aveugles">
 </ion-content>
