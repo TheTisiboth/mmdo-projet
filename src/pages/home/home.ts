@@ -6,22 +6,27 @@ import { DetailsPage } from '../details/details';
 import { HttpClient } from "@angular/common/http";
 import { HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { api_key } from "../../app/tmdb";
+import { api_key } from '../../app/tmdb';
 import { pluck } from 'rxjs/operator/pluck';
 import { AsyncPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { AlertController } from 'ionic-angular';
+import { Shake } from '@ionic-native/shake';
+import { Subscription } from 'rxjs/Subscription';
+import { Platform } from "ionic-angular";
 
 @Component({
 	selector: 'page-home',
-	templateUrl: 'home.html'
+	templateUrl: 'home.html',
 })
 
 export class HomePage {
 
-	constructor(public navCtrl: NavController, public http: HttpClient) {
+	constructor(public navCtrl: NavController, public http: HttpClient, public alertCtrl: AlertController,public platform : Platform,public shake : Shake) {
 		this.detailspage = DetailsPage;
 		this.results = Observable.of([]);
 	}
+	shakeSubscription: Subscription;
 	detailspage: any;
 	params: Result;
 	results: Observable<Result[]>;
@@ -42,7 +47,48 @@ export class HomePage {
 		const url: string = "https://api.themoviedb.org/3/search/movie";
 		return this.http.get<Result[]>(url, { params: { api_key: api_key, query: name, language: 'fr' } }).pluck('results');
 	}
+
+	discoverMovies(): Observable<Result[]> {
+		const url: string = "https://api.themoviedb.org/3/discover/movie";
+		return this.http.get<Result[]>(url, { params: { api_key: api_key, language: 'fr', primary_release_year: "2018" } }).pluck('results');
+	}
+
+	showRandomMovieAlert(movies: Result[]): void {
+		var movie = movies[Math.floor(Math.random() * movies.length)];
+		let alert = this.alertCtrl.create({
+			title: movie.title,
+			message: movie.overview,
+			buttons: [
+				{
+					text: 'Cancel',
+				},
+				{
+					text: 'Details',
+					handler: () => {
+						this.navCtrl.push(this.detailspage, movie);
+					}
+				}
+			]
+		});
+		alert.present();
+
+	}
+
+	ionViewDidEnter() {
+		this.shakeSubscription = Observable.fromPromise(this.platform.ready())
+			.switchMap(() => this.shake.startWatch())
+			.switchMap(() => this.discoverMovies())
+			.subscribe(movies => this.showRandomMovieAlert(movies));
+	}
+
+	ionViewDidLeave(){
+		this.shakeSubscription.unsubscribe();
+	}
+
 }
+
+
+
 
 export interface Result {
 	id: string;
