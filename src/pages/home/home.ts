@@ -9,6 +9,7 @@ import { Observable } from "rxjs/Observable";
 import { api_key } from "../../app/tmdb";
 import { pluck } from 'rxjs/operator/pluck';
 import { AsyncPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
 	selector: 'page-home',
@@ -35,21 +36,22 @@ export class HomePage {
 		else {
 			this.results = Observable.of([]);
 		}
-  }
+	}
 
-  fetchResults(name: string): Observable<Result[]>{
-    const url: string = "https://api.themoviedb.org/3/search/movie";
-    return this.http.get<Result[]>(url, {params: {api_key: api_key, query: name,language: 'fr'}}).pluck('results');
-  }
+	fetchResults(name: string): Observable<Result[]> {
+		const url: string = "https://api.themoviedb.org/3/search/movie";
+		return this.http.get<Result[]>(url, { params: { api_key: api_key, query: name, language: 'fr' } }).pluck('results');
+	}
 }
 
 export interface Result {
-  id: string;
+	id: string;
 	title: string;
-  original_title: string;
-  original_language: string;
-  overview: string;
-  poster_path: string;
+	original_title: string;
+	original_language: string;
+	overview: string;
+	poster_path: string;
+	release_date: string;
 }
 
 
