@@ -87,9 +87,6 @@ export class HomePage {
 
 }
 
-
-
-
 export interface Result {
 	id: string;
 	title: string;
