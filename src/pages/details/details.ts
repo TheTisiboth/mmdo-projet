@@ -21,7 +21,7 @@ export class DetailsPage {
 		//parametre passé a la détailspage : nom du film, date, etc
 		this.param = this.navParams.data;
 		//partie de l'url de la video
-		// this.urlvideo = this.fetchVideoUrl(this.param.id);
+		this.urlvideo = this.fetchVideoUrl(this.param.id);
 	}
 	param: Result;
 	urlvideo: Observable<video>;
