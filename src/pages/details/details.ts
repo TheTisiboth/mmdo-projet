@@ -4,12 +4,22 @@ import { Result } from '../home/home';
 import { HttpClient } from '@angular/common/http';
 import { api_key } from '../../app/tmdb';
 import { Observable } from "rxjs/Observable";
+import { Pipe, PipeTransform } from "@angular/core";
+import { DomSanitizer } from '@angular/platform-browser';
+
 /**
  * Generated class for the DetailsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+	constructor(private sanitizer: DomSanitizer) { }
+	transform(url) {
+		return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+	}
+}
 
 @Component({
 	selector: 'page-details',

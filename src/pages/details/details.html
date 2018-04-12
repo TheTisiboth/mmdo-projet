@@ -28,7 +28,7 @@
 				</p>
 			</ion-col>
 			<ion-col >
-				<img  id=monimg [src]="'https://image.tmdb.org/t/p/w154' + param.poster_path" alt="Description pour les aveugles">
+				<img  id=monimg [src]="'https://image.tmdb.org/t/p/w154' + param.poster_path | safe" alt="Description pour les aveugles">
 			</ion-col>
 		</ion-row>
 	</ion-grid>
