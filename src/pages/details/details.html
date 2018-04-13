@@ -22,7 +22,8 @@
 	</p>
 
 	<p>
-		<img align="right" id=monimg [src]="'https://image.tmdb.org/t/p/w154' + param.poster_path" alt="Description pour les aveugles">
+		<img [src]="param.poster_path ? 'https://image.tmdb.org/t/p/w154' + param.poster_path : 'https://thumb.ibb.co/bw66HS/save.jpg'"
+		 alt="Description pour les aveugles" align="right">
 		<b>Synopsis : </b>{{param.overview}}
 	</p>
 
