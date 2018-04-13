@@ -9,14 +9,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DetailsPage } from '../pages/details/details';
 import { Shake } from '@ionic-native/shake';
-import { SafePipe } from "../pages/details/details";
+
 
 @NgModule({
 	declarations: [
 		MyApp,
 		HomePage,
 		DetailsPage,
-		SafePipe
 	],
 	imports: [
 		BrowserModule,

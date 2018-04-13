@@ -20,19 +20,20 @@
 	<p>
 		<b>Titre original : </b>{{param.original_title}}
 	</p>
-	<ion-grid>
-		<ion-row>
-			<ion-col text-wrap >
-				<p >
-					<b>Synopsis : </b>{{param.overview}}
-				</p>
-			</ion-col>
-			<ion-col >
-				<img  id=monimg [src]="'https://image.tmdb.org/t/p/w154' + param.poster_path | safe" alt="Description pour les aveugles">
-			</ion-col>
+
+	<p>
+		<img align="right" id=monimg [src]="'https://image.tmdb.org/t/p/w154' + param.poster_path" alt="Description pour les aveugles">
+		<b>Synopsis : </b>{{param.overview}}
+	</p>
+
+
+
+
+	<ion-grid widht='95%'>
+		<ion-row justify-content-center align-items-center style="height: 100%">
+			<iframe id="mavideo" *ngIf="urlvideo | async as url" [src]="url" frameborder="1" allowfullscreen></iframe>
 		</ion-row>
 	</ion-grid>
 
 
-	<iframe [src]="'https://www.youtube.com/watch?v='+urlvideo.key"  frameborder="10" width="265" height="150"></iframe>
 </ion-content>
