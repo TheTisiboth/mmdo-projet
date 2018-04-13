@@ -1,0 +1,1 @@
+pour upload l'app sur phone gap, creer un zip avec ressources, www, et config.xml
