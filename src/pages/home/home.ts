@@ -11,13 +11,8 @@ import { pluck } from 'rxjs/operator/pluck';
 import { AsyncPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { AlertController } from 'ionic-angular';
-<<<<<<< HEAD
 import { Shake } from '@ionic-native/shake';
 import { Subscription } from 'rxjs/Subscription';
-=======
-import { Shake } from "@ionic-native/shake";
-import { Subscription } from "rxjs/Subscription";
->>>>>>> 87a878b6cd7d3790a03c3c79aa4e0704e1f220dc
 import { Platform } from "ionic-angular";
 
 @Component({
@@ -27,11 +22,7 @@ import { Platform } from "ionic-angular";
 
 export class HomePage {
 
-<<<<<<< HEAD
 	constructor(public navCtrl: NavController, public http: HttpClient, public alertCtrl: AlertController,public platform : Platform,public shake : Shake) {
-=======
-	constructor(public navCtrl: NavController, public http: HttpClient, public alertCtrl: AlertController, public platform: Platform, public shake: Shake) {
->>>>>>> 87a878b6cd7d3790a03c3c79aa4e0704e1f220dc
 		this.detailspage = DetailsPage;
 		this.results = Observable.of([]);
 	}
@@ -58,11 +49,7 @@ export class HomePage {
 	}
 
 	discoverMovies(): Observable<Result[]> {
-<<<<<<< HEAD
 		const url: string = "https://api.themoviedb.org/3/discover/movie";
-=======
-		const url = "https://api.themoviedb.org/3/discover/movie";
->>>>>>> 87a878b6cd7d3790a03c3c79aa4e0704e1f220dc
 		return this.http.get<Result[]>(url, { params: { api_key: api_key, language: 'fr', primary_release_year: "2018" } }).pluck('results');
 	}
 
