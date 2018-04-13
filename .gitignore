@@ -10,6 +10,7 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 *.json
+*.png
 .vscode/
 npm-debug.log*
 tmdb.ts
