@@ -10,11 +10,12 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DetailsPage } from '../pages/details/details';
 
+
 @NgModule({
 	declarations: [
 		MyApp,
 		HomePage,
-		DetailsPage
+		DetailsPage,
 	],
 	imports: [
 		BrowserModule,

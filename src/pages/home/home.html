@@ -13,7 +13,8 @@
 	<ion-list>
 		<ion-item *ngFor="let item of results | async">
 			<ion-thumbnail item-start>
-				<img [src]="'https://image.tmdb.org/t/p/w154' + item.poster_path" alt="Description pour les aveugles">
+			<img [src]="item.poster_path ? 'https://image.tmdb.org/t/p/w154' + item.poster_path : 'https://thumb.ibb.co/bw66HS/save.jpg'"
+			 alt="Description pour les aveugles">
 			</ion-thumbnail>
 			<h2>{{item.title}}</h2>
 			<p>{{item.release_date | date:'dd/MM/yyyy'}}</p>
